@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Route } from "react-router-dom";
-
+import { Route, Routes } from "react-router-dom";
+import { Navbar, Profile } from "./components";
 const App = () => {
   return (
     <>
-      <navbar />
-      <div>
-        <Route exact path="/">
-          <home />
-        </Route>
-        <Route exact path="/routines">
-          <routines />
-        </Route>
-        <Route exact path="/profile">
-          <profile />
-        </Route>
-        <Route exact path="/activities">
-          <activities />
-        </Route>
-        <Route exact path="/login">
-          <login />
-        </Route>
-      </div>
+      <Navbar />
+
+      <Routes>
+        <Route exact path="/profile" components={<Profile />} />
+        {/* <Route exact path="/" components={<Home />} />
+
+        <Route exact path="/routines" components={<Routines />} />
+
+        <Route exact path="/activities" components={<Routtines />} />
+
+        <Route exact path="/login" components={<Login />} /> */}
+      </Routes>
     </>
   );
 };
