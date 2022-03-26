@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile } from "./components";
+import { Navbar, Profile, Routines } from "./components";
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
+  const [routines, setRoutines] = useState([]);
+
+  const fetchRoutines = async () => {
+    const resp = await fetch(`${API}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const info = await resp.json();
+    setRoutines(info.data.routines);
+  };
 
   const fetchUser = async () => {
     const lsToken = localStorage.getItem("token");
@@ -25,6 +36,7 @@ const App = () => {
 
   useEffect(() => {
     fetchUser();
+    fetchRoutines();
   });
 
   return (
@@ -32,14 +44,14 @@ const App = () => {
       <Navbar />
 
       <Routes>
-        <Route exact path="/profile" components={<Profile />} />
-        {/* <Route exact path="/" components={<Home />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/" element={<Home />} />
 
-        <Route exact path="/routines" components={<Routines />} />
+        <Route exact path="/routines" element={<Routines />} />
 
-        <Route exact path="/activities" components={<Routtines />} />
+        <Route exact path="/activities" element={<Routines />} />
 
-        <Route exact path="/login" components={<Login />} /> */}
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </>
   );

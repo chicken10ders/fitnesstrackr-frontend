@@ -7,7 +7,7 @@ const Register = ({ token, setToken }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const history = useHistory();
+  //const history = useHistory();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const Register = ({ token, setToken }) => {
     }
     setToken(info.data.token);
     localStorage.setItem("token", info.data.token);
-    history.push("/");
+    //history.push("/");
   };
 
   return (
