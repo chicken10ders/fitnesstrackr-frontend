@@ -7,6 +7,7 @@ const Navbar = ({ user, setToken, setUser }) => {
       <Link to="/routines">Routines</Link>
       <Link to="/profile">My Profile</Link>
       <Link to="/activites">Activities</Link>
+      <Link to="/register"> Register</Link>
       <Link to="/login">Login</Link>
     </div>
   );

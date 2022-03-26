@@ -7,7 +7,7 @@ const Register = ({ token, setToken }) => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,8 +24,8 @@ const Register = ({ token, setToken }) => {
       },
       body: JSON.stringify({
         user: {
-          username,
-          password,
+          username: username,
+          password: password,
         },
       }),
     });

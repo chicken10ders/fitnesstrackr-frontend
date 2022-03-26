@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile } from "./components";
+import { Navbar, Profile, Login, Register } from "./components";
+
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
@@ -32,14 +33,17 @@ const App = () => {
       <Navbar />
 
       <Routes>
-        <Route exact path="/profile" components={<Profile />} />
-        {/* <Route exact path="/" components={<Home />} />
+        {/* <Route exact path="/" components={<Home />} /> */}
+        <Route exact path="/profile" element={<Profile />} />
+        {/* <Route exact path="/routines" element={<Routines />} /> */}
+        {/* <Route exact path="/activities" element={<Activites />}  */}
 
-        <Route exact path="/routines" components={<Routines />} />
-
-        <Route exact path="/activities" components={<Routtines />} />
-
-        <Route exact path="/login" components={<Login />} /> */}
+        <Route exact path="/login" element={<Login setToken={setToken} />} />
+        <Route
+          exact
+          path="/register"
+          element={<Register setToken={setToken} />}
+        />
       </Routes>
     </>
   );
