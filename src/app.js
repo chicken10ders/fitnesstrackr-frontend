@@ -25,12 +25,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    // fetchUser();
   });
 
   return (
     <>
-      <Navbar />
+      <Navbar user={user} setToken={setToken} setUser={setUser} />
 
       <Routes>
         {/* <Route exact path="/" components={<Home />} /> */}

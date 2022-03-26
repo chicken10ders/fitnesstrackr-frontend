@@ -9,6 +9,17 @@ const Navbar = ({ user, setToken, setUser }) => {
       <Link to="/activites">Activities</Link>
       <Link to="/register"> Register</Link>
       <Link to="/login">Login</Link>
+      <Link
+        to="/"
+        onClick={() => {
+          setToken("");
+          setUser([]);
+          localStorage.removeItem("token");
+        }}
+      >
+        Log Out
+      </Link>
+      {user && <span>Welcome: {user}</span>}
     </div>
   );
 };
