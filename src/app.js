@@ -48,14 +48,18 @@ const App = () => {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     fetchUser();
     fetchRoutine();
     fetchActivity();
+=======
+    // fetchUser();
+>>>>>>> ebb4fa6502cfaa622c67198674186d2c4d7e4f7d
   });
 
   return (
     <>
-      <Navbar />
+      <Navbar user={user} setToken={setToken} setUser={setUser} />
 
       <Routes>
         {/* <Route exact path="/" components={<Home />} /> */}
