@@ -6,7 +6,7 @@ const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //const history = useHistory();
+  // const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,7 +29,7 @@ const Login = ({ token, setToken }) => {
     }
     setToken(info.data.token);
     localStorage.setItem("token", info.data.token);
-    //history.push("/");
+    // history.push("/");
   };
 
   return (

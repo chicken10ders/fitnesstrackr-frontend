@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile, Routines } from "./components";
+import { Navbar, Profile, Login, Register, Routines } from "./components";
+
 const App = () => {
   const [token, setToken] = useState("");
   const [user, setUser] = useState([]);
-  const [routines, setRoutines] = useState([]);
+  const [routines, setRoutine] = useState([]);
+  const [activities, setActivity] = useState([]);
 
-  const fetchRoutines = async () => {
+  const fetchRoutine = async () => {
     const resp = await fetch(`${API}/routines`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
     const info = await resp.json();
-    setRoutines(info.data.routines);
+    setRoutine(info);
   };
+  const fetchActivity = async () => {
+    const resp = await fetch(`${API}/activities`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const info = await resp.json();
+    setActivity(info);
+  };
+
+  console.log(activities);
 
   const fetchUser = async () => {
     const lsToken = localStorage.getItem("token");
@@ -36,7 +49,8 @@ const App = () => {
 
   useEffect(() => {
     fetchUser();
-    fetchRoutines();
+    fetchRoutine();
+    fetchActivity();
   });
 
   return (
@@ -44,14 +58,29 @@ const App = () => {
       <Navbar />
 
       <Routes>
+        {/* <Route exact path="/" components={<Home />} /> */}
         <Route exact path="/profile" element={<Profile />} />
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/routines"
+          element={
+            <Routines
+              routines={routines}
+              setRoutine={setRoutine}
+              activities={activities}
+              setActivity={setActivity}
+              user={user}
+            />
+          }
+        />
+        {/* <Route exact path="/activities" element={<Activites />}  */}
 
-        <Route exact path="/routines" element={<Routines />} />
-
-        <Route exact path="/activities" element={<Routines />} />
-
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/login" element={<Login setToken={setToken} />} />
+        <Route
+          exact
+          path="/register"
+          element={<Register setToken={setToken} />}
+        />
       </Routes>
     </>
   );

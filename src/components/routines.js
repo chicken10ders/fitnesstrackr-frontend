@@ -8,14 +8,25 @@ const Routines = ({ routines, user }) => {
           </Link>
         ) : null */}
 
-      {routines.map((routine) => (
-        <div key={routine._id}>
-          <h2>{routine.title}</h2>
-          <p>{routine.goal}</p>
-          <h3>{routine.user}</h3>
-          <hr></hr>
-        </div>
-      ))}
+      {routines.map((routine) => {
+        return (
+          <div key={routine.id}>
+            <h2>{routine.name}</h2>
+            <h3>{routine.goal}</h3>
+            <h2>{routine.creatorName}</h2>
+            {activites.map((activity) => {
+              return (
+                <div key={activity.id}>
+                  <p>{activity.name}</p>
+                  <p>{activity.description}</p>
+                </div>
+              );
+            })}
+
+            <hr></hr>
+          </div>
+        );
+      })}
     </>
   );
 };
