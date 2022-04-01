@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile, Login, Register, Routines, Home } from "./components";
+import {
+  Navbar,
+  Profile,
+  Login,
+  Register,
+  Routines,
+  AddRoutine,
+  Activities,
+  Home,
+} from "./components";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -73,7 +82,16 @@ const App = () => {
             />
           }
         />
-        {/* <Route exact path="/activities" element={<Activites />}  */}
+        <Route
+          exact
+          path="/routines/addroutine"
+          element={<AddRoutine token={token} />}
+        />
+        <Route
+          exact
+          path="/activities"
+          element={<Activities activities={activities} />}
+        />
 
         <Route exact path="/login" element={<Login setToken={setToken} />} />
         <Route

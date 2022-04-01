@@ -1,13 +1,15 @@
-const Routines = ({ routines, user, activites }) => {
-  console.log(routines);
+import { Link } from "react-router-dom";
+
+const Routines = ({ routines, user, activities }) => {
   return (
     <>
       <h1 className="flex justify-center">Routines</h1>
-      {/* user ? (
+
+      {user ? (
         <Link to="./addroutine">
-        <button>Add routine</button>
+          <button>Add routine</button>
         </Link>
-      ) : null */}
+      ) : null}
 
       <div className="grid grid-cols-3 gap-4 place-content-around">
         {routines.map((routine) => {
