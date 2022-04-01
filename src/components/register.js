@@ -33,15 +33,9 @@ const Register = ({ token, setToken }) => {
     if (info.error) {
       return setError(info.error.message);
     }
-<<<<<<< HEAD
-    setToken(info.data.token);
-    localStorage.setItem("token", info.data.token);
-    //history.push("/");
-=======
     setToken(info.token);
     localStorage.setItem("token", info.token);
     navigate("/profile");
->>>>>>> ebb4fa6502cfaa622c67198674186d2c4d7e4f7d
   };
   if (!lsToken) {
     return (

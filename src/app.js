@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile, Login, Register, Routines } from "./components";
+import {
+  Navbar,
+  Profile,
+  Login,
+  Register,
+  Routines,
+  AddRoutine,
+  Activities,
+} from "./components";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -28,8 +36,6 @@ const App = () => {
     setActivity(info);
   };
 
-  console.log(activities);
-
   const fetchUser = async () => {
     const lsToken = localStorage.getItem("token");
     if (lsToken) {
@@ -48,13 +54,9 @@ const App = () => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     fetchUser();
     fetchRoutine();
     fetchActivity();
-=======
-    // fetchUser();
->>>>>>> ebb4fa6502cfaa622c67198674186d2c4d7e4f7d
   });
 
   return (
@@ -77,7 +79,16 @@ const App = () => {
             />
           }
         />
-        {/* <Route exact path="/activities" element={<Activites />}  */}
+        <Route
+          exact
+          path="/addroutine"
+          element={<AddRoutine token={token} />}
+        />
+        <Route
+          exact
+          path="/activities"
+          element={<Activities activities={activities} />}
+        />
 
         <Route exact path="/login" element={<Login setToken={setToken} />} />
         <Route

@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 const Routines = ({ routines, user }) => {
   return (
     <>
       <h1>Routines</h1>
-      {/* user ? (
-          <Link to="./addroutine">
-            <button>Add routine</button>
-          </Link>
-        ) : null */}
+      {user ? (
+        <Link to="./addroutine">
+          <button>Add routine</button>
+        </Link>
+      ) : null}
 
       {routines.map((routine) => {
         return (
@@ -14,14 +16,14 @@ const Routines = ({ routines, user }) => {
             <h2>{routine.name}</h2>
             <h3>{routine.goal}</h3>
             <h2>{routine.creatorName}</h2>
-            {activites.map((activity) => {
+            {/*activites.map((activity) => {
               return (
                 <div key={activity.id}>
                   <p>{activity.name}</p>
                   <p>{activity.description}</p>
                 </div>
               );
-            })}
+            })*/}
 
             <hr></hr>
           </div>
