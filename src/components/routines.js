@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Routines = ({ routines, user }) => {
+const Routines = ({ routines, user, activities }) => {
   return (
     <>
       <h1>Routines</h1>
@@ -12,19 +12,18 @@ const Routines = ({ routines, user }) => {
 
       {routines.map((routine) => {
         return (
-          <div key={routine.id}>
+          <div className="flex justify-left" key={routine.id}>
             <h2>{routine.name}</h2>
             <h3>{routine.goal}</h3>
             <h2>{routine.creatorName}</h2>
-            {/*activites.map((activity) => {
+            {routine.activities.map((activity) => {
               return (
-                <div key={activity.id}>
-                  <p>{activity.name}</p>
-                  <p>{activity.description}</p>
+                <div className="flex justify-center" key={activity.id}>
+                  <li>{activity.name}</li>
+                  <li>{activity.description}</li>
                 </div>
               );
-            })*/}
-
+            })}
             <hr></hr>
           </div>
         );

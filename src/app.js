@@ -9,6 +9,7 @@ import {
   Routines,
   AddRoutine,
   Activities,
+  Home,
 } from "./components";
 
 const App = () => {
@@ -32,7 +33,9 @@ const App = () => {
         "Content-Type": "application/json",
       },
     });
+
     const info = await resp.json();
+
     setActivity(info);
   };
 
@@ -57,14 +60,14 @@ const App = () => {
     fetchUser();
     fetchRoutine();
     fetchActivity();
-  });
+  }, [token]);
 
   return (
     <>
       <Navbar user={user} setToken={setToken} setUser={setUser} />
 
       <Routes>
-        {/* <Route exact path="/" components={<Home />} /> */}
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route
           exact
@@ -81,7 +84,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/addroutine"
+          path="/routines/addroutine"
           element={<AddRoutine token={token} />}
         />
         <Route

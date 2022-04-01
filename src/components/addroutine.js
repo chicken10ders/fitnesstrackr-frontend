@@ -5,6 +5,7 @@ const API = "https://fitnesstrac-kr.herokuapp.com/api";
 const AddRoutine = ({ token }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
+  //const [isPublic, setIsPublic] = useState(null);
 
   const handleRoutines = async () => {
     const resp = await fetch(`${API}/routines`, {
@@ -17,7 +18,7 @@ const AddRoutine = ({ token }) => {
         routine: {
           name,
           goal,
-          //isPublic: true,
+          isPublic: true,
         },
       }),
     });
@@ -30,7 +31,7 @@ const AddRoutine = ({ token }) => {
       <form onSubmit={handleRoutines}>
         <input
           required
-          placeholder="Enter name of your routine..."
+          placeholder="Enter name..."
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -40,6 +41,14 @@ const AddRoutine = ({ token }) => {
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
+        {/*<p>
+          Make routine public?
+          <input
+            type="checkbox"
+            value={isPublic}
+            onChange={(e) => setIsPublic(e.target.value)}
+          />
+        </p>*/}
         <button type="submit">Submit</button>
       </form>
     </div>
