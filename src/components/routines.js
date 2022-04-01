@@ -1,33 +1,41 @@
 const Routines = ({ routines, user, activites }) => {
   console.log(routines);
   return (
-    <div>
+    <>
       <h1 className="flex justify-center">Routines</h1>
       {/* user ? (
-          <Link to="./addroutine">
-            <button>Add routine</button>
-          </Link>
-        ) : null */}
+        <Link to="./addroutine">
+        <button>Add routine</button>
+        </Link>
+      ) : null */}
 
-      {routines.map((routine) => {
-        return (
-          <div className="flex justify-left" key={routine.id}>
-            <h2>{routine.name}</h2>
-            <h3>{routine.goal}</h3>
-            <h2>{routine.creatorName}</h2>
-            {routine.activities.map((activity) => {
-              return (
-                <div className="flex justify-center" key={activity.id}>
-                  <li>{activity.name}</li>
-                  <li>{activity.description}</li>
-                </div>
-              );
-            })}
-            <hr></hr>
-          </div>
-        );
-      })}
-    </div>
+      <div className="grid grid-cols-3 gap-4 place-content-around">
+        {routines.map((routine) => {
+          return (
+            <div
+              className=" border border-slate-700 bg-blue-300"
+              key={routine.id}
+            >
+              <h2 className="font-bold underline text-red-400">
+                {routine.name}
+              </h2>
+
+              <p>{routine.goal}</p>
+              {routine.activities.map((activity) => {
+                return (
+                  <div className="flex justify-center pt-10" key={activity.id}>
+                    <li>{activity.name}</li>
+                    <li>{activity.description}</li>
+                  </div>
+                );
+              })}
+              <p className="flex justify-end italic ">{routine.creatorName}</p>
+              <hr></hr>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
