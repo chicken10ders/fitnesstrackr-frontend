@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { API } from "./index";
-import { Navbar, Profile, Login, Register, Routines } from "./components";
+import { Navbar, Profile, Login, Register, Routines, Home } from "./components";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -24,11 +24,11 @@ const App = () => {
         "Content-Type": "application/json",
       },
     });
+
     const info = await resp.json();
+
     setActivity(info);
   };
-
-  console.log(activities);
 
   const fetchUser = async () => {
     const lsToken = localStorage.getItem("token");
@@ -48,21 +48,17 @@ const App = () => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     fetchUser();
     fetchRoutine();
     fetchActivity();
-=======
-    // fetchUser();
->>>>>>> ebb4fa6502cfaa622c67198674186d2c4d7e4f7d
-  });
+  }, [token]);
 
   return (
     <>
       <Navbar user={user} setToken={setToken} setUser={setUser} />
 
       <Routes>
-        {/* <Route exact path="/" components={<Home />} /> */}
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route
           exact
