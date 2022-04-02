@@ -9,6 +9,7 @@ import {
   Routines,
   AddRoutine,
   Activities,
+  AddActivity,
   Home,
 } from "./components";
 import { info } from "autoprefixer";
@@ -95,7 +96,12 @@ const App = () => {
         <Route
           exact
           path="/activities"
-          element={<Activities activities={activities} />}
+          element={<Activities user={user} activities={activities} />}
+        />
+        <Route
+          exact
+          path="/activities/addactivity"
+          element={<AddActivity token={token} />}
         />
 
         <Route exact path="/login" element={<Login setToken={setToken} />} />

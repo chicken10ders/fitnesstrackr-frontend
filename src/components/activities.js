@@ -1,12 +1,14 @@
-const Activities = ({ activities }) => {
+import { Link } from "react-router-dom";
+
+const Activities = ({ activities, user }) => {
   return (
     <>
       <h1>Activities</h1>
-      {/*{user ? (
+      {user ? (
         <Link to="./addactivity">
           <button>Add activity</button>
         </Link>
-      ) : null} */}
+      ) : null}
 
       {activities.map((activity) => {
         return (

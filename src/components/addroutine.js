@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const API = "https://fitnesstrac-kr.herokuapp.com/api";
 
-const AddRoutine = ({ token }) => {
+const AddRoutine = () => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   //const [isPublic, setIsPublic] = useState(null);
@@ -19,7 +19,7 @@ const AddRoutine = ({ token }) => {
         routine: {
           name: name,
           goal: goal,
-          isPublic: true,
+          isPublic: null,
         },
       }),
     });
@@ -46,14 +46,6 @@ const AddRoutine = ({ token }) => {
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
-        {/*<p>
-          Make routine public?
-          <input
-            type="checkbox"
-            value={isPublic}
-            onChange={(e) => setIsPublic(e.target.value)}
-          />
-        </p>*/}
         <button type="submit">Submit</button>
       </form>
     </div>
