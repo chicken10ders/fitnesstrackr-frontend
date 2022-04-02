@@ -10,7 +10,7 @@ const Profile = ({ user }) => {
         </Link>
       ) : (
         <div>
-          <h1> placeholder </h1>
+          <h1> Please Log in to add routines! </h1>
         </div>
       )}
     </>

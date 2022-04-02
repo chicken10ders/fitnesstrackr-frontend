@@ -11,6 +11,7 @@ import {
   Activities,
   Home,
 } from "./components";
+import { info } from "autoprefixer";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -43,18 +44,24 @@ const App = () => {
     const lsToken = localStorage.getItem("token");
     if (lsToken) {
       setToken(lsToken);
+    } else {
+      return;
     }
+
+    console.log("hello", lsToken);
+
     const resp = await fetch(`${API}/users/me`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${lsToken}`,
       },
     });
+
     const info = await resp.json();
-    if (info.success) {
-      setUser(info.data);
-    }
+
+    setUser(info);
   };
+  console.log(user);
 
   useEffect(() => {
     fetchUser();
@@ -84,7 +91,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/routines/addroutine"
+          path="/profile/addroutine"
           element={<AddRoutine token={token} />}
         />
         <Route
@@ -96,7 +103,7 @@ const App = () => {
         <Route exact path="/login" element={<Login setToken={setToken} />} />
         <Route
           exact
-          path="/register"
+          path="/login/register"
           element={<Register setToken={setToken} />}
         />
       </Routes>

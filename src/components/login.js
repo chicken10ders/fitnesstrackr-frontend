@@ -1,7 +1,8 @@
 import { API } from "../index";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { info } from "autoprefixer";
+const lsToken = localStorage.getItem("token");
 
 const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
@@ -11,6 +12,8 @@ const Login = ({ token, setToken }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
+
     const resp = await fetch(`${API}/users/login`, {
       method: "POST",
       headers: {
@@ -23,14 +26,17 @@ const Login = ({ token, setToken }) => {
     });
     const info = await resp.json();
     if (info.error) {
-      return setError(info.error.message);
+      setUsername("Incorrect Username");
+      setPassword("");
+
+      setError(info.error.message);
     }
+
     setToken(info.token);
     localStorage.setItem("token", info.token);
-    navigate("/home");
+    navigate("/");
   };
 
-  const lsToken = localStorage.getItem("token");
   return (
     <>
       {!lsToken ? (
@@ -53,10 +59,18 @@ const Login = ({ token, setToken }) => {
             <button type="submit">Submit</button>
           </form>
           <p id="error">{error}</p>
+
+          <p> Can't log in? Maybe you need to register.</p>
+          <Link to="./register">
+            <button>Register</button>
+          </Link>
         </div>
       ) : (
         <div>
-          <p> You're logged in go get fitness</p>
+          {/* <Link to="./register">
+            <button>Register</button>
+          </Link> */}
+          you are logged in
         </div>
       )}
     </>

@@ -16,10 +16,7 @@ const Navbar = ({ user, setToken, setUser }) => {
       <Link className="pr-2" to="/activities">
         Activities
       </Link>
-      <Link className="pr-2" to="/register">
-        {" "}
-        Register
-      </Link>
+
       <Link className="pr-2" to="/login">
         Login
       </Link>
@@ -33,7 +30,7 @@ const Navbar = ({ user, setToken, setUser }) => {
       >
         Log Out
       </Link>
-      {user && <span>Welcome: {user}</span>}
+      {user && <span>Welcome: {user.username}</span>}
     </div>
   );
 };
