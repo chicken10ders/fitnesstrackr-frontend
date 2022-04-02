@@ -26,6 +26,7 @@ const App = () => {
       },
     });
     const info = await resp.json();
+    console.log(info);
     setRoutine(info);
   };
   const fetchActivity = async () => {

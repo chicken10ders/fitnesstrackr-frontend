@@ -1,3 +1,4 @@
+import { info } from "autoprefixer";
 import { useState } from "react";
 
 const API = "https://fitnesstrac-kr.herokuapp.com/api";
@@ -6,23 +7,27 @@ const AddRoutine = ({ token }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   //const [isPublic, setIsPublic] = useState(null);
-
+  const lsToken = localStorage.getItem("token");
   const handleRoutines = async () => {
     const resp = await fetch(`${API}/routines`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${lsToken}`,
       },
       body: JSON.stringify({
         routine: {
-          name,
-          goal,
+          name: name,
+          goal: goal,
           isPublic: true,
         },
       }),
     });
     const info = await resp.json();
+    console.log(info);
+    if (info.error) {
+      setError(info.error.message);
+    }
   };
 
   return (
