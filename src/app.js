@@ -48,8 +48,6 @@ const App = () => {
       return;
     }
 
-    console.log("hello", lsToken);
-
     const resp = await fetch(`${API}/users/me`, {
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +59,6 @@ const App = () => {
 
     setUser(info);
   };
-  console.log(user);
 
   useEffect(() => {
     fetchUser();

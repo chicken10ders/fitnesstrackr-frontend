@@ -2,7 +2,6 @@ import { API } from "../index";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { info } from "autoprefixer";
-const lsToken = localStorage.getItem("token");
 
 const Login = ({ token, setToken }) => {
   const [username, setUsername] = useState("");
@@ -34,8 +33,9 @@ const Login = ({ token, setToken }) => {
 
     setToken(info.token);
     localStorage.setItem("token", info.token);
-    navigate("/");
+    navigate("/profile");
   };
+  const lsToken = localStorage.getItem("token");
 
   return (
     <>
