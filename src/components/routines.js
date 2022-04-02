@@ -21,6 +21,8 @@ const Routines = ({ routines, user, activities }) => {
                 <div className="flex justify-center" key={activity.id}>
                   <li>{activity.name}</li>
                   <li>{activity.description}</li>
+                  <li>Duration: {activity.duration}</li>
+                  <li>Count: {activity.count}</li>
                 </div>
               );
             })}

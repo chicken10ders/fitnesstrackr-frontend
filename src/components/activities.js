@@ -2,11 +2,11 @@ const Activities = ({ activities }) => {
   return (
     <>
       <h1>Activities</h1>
-      {/*{user ? (
+      {user ? (
         <Link to="./addactivity">
           <button>Add activity</button>
         </Link>
-      ) : null} */}
+      ) : null}
 
       {activities.map((activity) => {
         return (

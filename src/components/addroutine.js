@@ -2,10 +2,12 @@ import { useState } from "react";
 
 const API = "https://fitnesstrac-kr.herokuapp.com/api";
 
-const AddRoutine = ({ token }) => {
+const AddRoutine = () => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   //const [isPublic, setIsPublic] = useState(null);
+
+  const token = localStorage.getItem("token");
 
   const handleRoutines = async () => {
     const resp = await fetch(`${API}/routines`, {
@@ -16,8 +18,8 @@ const AddRoutine = ({ token }) => {
       },
       body: JSON.stringify({
         routine: {
-          name,
-          goal,
+          name: name,
+          goal: goal,
           isPublic: true,
         },
       }),
