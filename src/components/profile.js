@@ -1,8 +1,19 @@
-const Profile = () => {
+import { Link } from "react-router-dom";
+
+const Profile = ({ user }) => {
+  const lsToken = localStorage.getItem("token");
   return (
-    <div>
-      <h1> placeholder </h1>
-    </div>
+    <>
+      {lsToken ? (
+        <Link to="./addroutine">
+          <button>Add routine</button>
+        </Link>
+      ) : (
+        <div>
+          <h1> Please Log in to add routines! </h1>
+        </div>
+      )}
+    </>
   );
 };
 

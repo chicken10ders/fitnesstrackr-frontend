@@ -1,4 +1,6 @@
-const Activities = ({ activities }) => {
+import { Link } from "react-router-dom";
+
+const Activities = ({ activities, user }) => {
   return (
     <>
       <h1>Activities</h1>

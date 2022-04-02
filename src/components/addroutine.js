@@ -20,7 +20,7 @@ const AddRoutine = () => {
         routine: {
           name: name,
           goal: goal,
-          isPublic: true,
+          isPublic: null,
         },
       }),
     });
@@ -43,14 +43,6 @@ const AddRoutine = () => {
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
-        {/*<p>
-          Make routine public?
-          <input
-            type="checkbox"
-            value={isPublic}
-            onChange={(e) => setIsPublic(e.target.value)}
-          />
-        </p>*/}
         <button type="submit">Submit</button>
       </form>
     </div>
