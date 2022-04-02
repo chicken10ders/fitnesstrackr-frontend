@@ -5,12 +5,6 @@ const Routines = ({ routines, user, activities }) => {
     <>
       <h1 className="flex justify-center">Routines</h1>
 
-      {user ? (
-        <Link to="./addroutine">
-          <button>Add routine</button>
-        </Link>
-      ) : null}
-
       <div className="grid grid-cols-3 gap-4 place-content-around">
         {routines.map((routine) => {
           return (
